@@ -1,6 +1,6 @@
 # intergenerational-income-mobility
 
-```rubi
+```ruby
 # open distribution list
 with open('people.csv', 'r', newline='') as f:
     reader = csv.reader(f)
