@@ -7,7 +7,7 @@ with open('people.csv', 'r', newline='') as f:
     distro = [row for row in reader]
 ```
 ```
-*3. Umbenennung der Variablen, damit mit dem Datenset pequiv.dta / ppathl.dta gemerged werden kann* --> Mit dem SOEP abgesprochen, dass das in Ordnung geht
+*3. Umbenennung der Variablen, damit mit dem Datenset pequiv.dta / ppathl.dta gemerged werden kann
 *sum pid -> min:0, max:0 
 drop pid cid
 rename hhnr cid
