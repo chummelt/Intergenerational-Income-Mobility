@@ -5,7 +5,7 @@
 #3) quantile regression
 
 
-#1)histogram and density curve
+#1) histogram and density curve
 
 rm(list=ls(all=TRUE))
 library(tidyverse)
