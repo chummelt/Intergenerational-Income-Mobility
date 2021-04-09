@@ -96,7 +96,7 @@ gen nryrs = .
 replace nryrs = last_observation - first_observation
 label variable nryrs "number of years in son’s earnings average"
 
-*25. include inflation (up to 1991: year 1995 = 100, since 1992: year 2015 = 100)
+*include inflation (up to 1991: year 1995 = 100, since 1992: year 2015 = 100)
 gen inflationrate =.
 replace inflationrate = 2.5 if syear == 1984
 replace inflationrate = 2 if syear == 1985
