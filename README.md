@@ -1,4 +1,4 @@
-###1 Objective of the analysis:
+### 1 Objective of the analysis:
 Objective of the study: Estimation of the economic mobility of Germany and to find regional differences of intergenerational income elasticities within Germany. The underlying theoretical model is the human capital theory.
 The structure of the empirical investigation is as follows: 
 
