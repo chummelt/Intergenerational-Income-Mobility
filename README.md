@@ -60,9 +60,22 @@ label variable nryrs "number of years in son’s earnings average"
 ### 2.2 Data and Sample Selection
 
 The longitudinal survey of the Socio-Economic Panel (SOEP) is used which captures representative data from 1984-2017.
->DOI: 10.5684/soep.v34
+DOI: 10.5684/soep.v34
 Collection period: 1984-2017
-Publication date: 2019-03-05<
+Publication date: 2019-03-05
+
+The individual labor income variable covers gross income and salary from all employment before deduction of taxes and social security, unemployment and health insurance.
+Other important sample restrictions:  
+
+- drop observations under 400€ a month - since it is assumed that this would be a mini-job, not a real living wage  
+- drop ids for which there are less than 5 observations available. Estimating life-income on 3 income-data points seems to far a stretch
+- use only male observartions - income observations for women in 1980s may introduce a bias to the data  
+
+```
+drop if incomeS <400
+drop if counter_pid <5
+drop if sex == 2
+```
 
 
 ## 3. Empirical Results
@@ -73,10 +86,5 @@ Publication date: 2019-03-05<
 
 ```
 ```
-*3. Umbenennung der Variablen, damit mit dem Datenset pequiv.dta / ppathl.dta gemerged werden kann
-*sum pid -> min:0, max:0 
-drop pid cid
-rename hhnr cid
-rename persnr pid
 
-```
+
