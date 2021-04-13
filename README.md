@@ -1,6 +1,6 @@
 # Like Father, Like Son - intergenerational income mobility for Germany
 
-## 1 Objective and structure of the analysis:
+## 1 Objective and Structure of the Analysis:
 Estimation of the economic mobility of Germany and to find regional differences of intergenerational income elasticities in Germany. The underlying theoretical model is the human capital theory.
 
 The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts.
