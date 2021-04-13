@@ -19,8 +19,8 @@ Since there is no data available for lifetime income, this has to be estimated. 
 
 This is conducted with the following methods:
 
-**Full sample**: Log-log OLS, Quantile Regression, Transition Matrix  
-**Sub-samples** (East/West and rural/urban): Log-log OLS
+Log-log OLS, Quantile Regression, Transition Matrix  
+
 
 ### 2.1 Measuring Lifetime Income
 
