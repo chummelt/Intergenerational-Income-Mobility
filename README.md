@@ -1,3 +1,5 @@
+(keep in mind: this readme includes equations which can only be read while using the dark mode theme)
+
 # Like Father, Like Son - intergenerational income mobility for Germany
 
 ## 1 Objective and Structure of the Analysis:
