@@ -49,6 +49,7 @@ replace nryrs = last_observation - first_observation
 label variable nryrs "number of years in son’s earnings average"
 ```
 This leads to the estimation equation:  
+
 <img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}\ln&space;Y_{i,&space;g}=\alpha&plus;\beta&space;\ln&space;Y_{i,&space;t}&plus;\eta&space;Z_{i,&space;g-1}&plus;\gamma&space;W_{i,&space;g}&plus;\varepsilon_{i,&space;t}}" title="\large {\color{White}\ln Y_{i, g}=\alpha+\beta \ln Y_{i, t}+\eta Z_{i, g-1}+\gamma W_{i, g}+\varepsilon_{i, t}}" />
 
 
