@@ -10,7 +10,7 @@ The structure of the empirical investigation is as follows:
 - **Third**: intergenerational mobility in East Germany and West Germany (sub-sample)
 
 The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts.
-Every step is described detailed in the scripts. Nevertheless, this readme provides the additional econometric framework in addition to the code. 
+Every step is described in detail within the scripts. Nevertheless, this readme provides the additional econometric framework in addition to the codes. 
 
 ## 2 Methodology of Analysis:
 
@@ -96,6 +96,9 @@ drop _merge
 gen log_incomeS_mean = ln(income_s)
 gen log_incomeF_mean = ln(income_f)
 ```
+
+
+
 ## 3. Empirical Results
 
 
