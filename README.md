@@ -17,7 +17,7 @@ The data preparation and linear regressions are conducted in the stata do-files.
 
 ## 3. Empirical Results
 
-![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}) 
+<img src="https://latex.codecogs.com/svg.latex?\bg_white&space;\begin{equation}&space;\label{eq:acht}&space;Y_{i,&space;g}=\alpha&plus;\beta&space;Y_{i,&space;g-1}&plus;\epsilon_{i,&space;g}&space;\end{equation}" title="\begin{equation} \label{eq:acht} Y_{i, g}=\alpha+\beta Y_{i, g-1}+\epsilon_{i, g} \end{equation}" />
 
 ## 4. Conclusion
 
