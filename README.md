@@ -41,6 +41,9 @@ So to solve for this bias, the estimation excludes income observations from befo
 drop if age <30
 drop if age >55
 ```
+<img src="images/07_lifeincome.png" width="350">
+
+
 In addition to that, control variables for *age*, *age squared* and the *number of years in a child's income* are generated and introduced in *Z(i,g-1)* and *W(i,g*).
 
 ```ruby
@@ -171,6 +174,6 @@ Use this transition matrix for the plotting of the markov chain
 ```ruby
 #visual marcov chain
 trans.mat2 <- as.matrix.data.frame(trans.mat1)
-markov2 <-new("markovchain",transitionMatrix=trans.mat2 ,states=c("1.Quantil","2.Quantil","3.Quantil","4.Quantil","5.Quantil"), name="test")
+markov2 <-new("markovchain",transitionMatrix=trans.mat2 ,states=c("1.Quantil","2.Quantil","3.Quantil","4.Quantil","5.Quantil"), name="markov")
 plot(markov2)
 ```
