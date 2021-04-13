@@ -90,6 +90,24 @@ drop _merge
 ```
 Now, if we take a step back and look again at the income observations for sons in the first graph, we see that the income variable is not normal distributed but rather skewed. In order to meet all of the assumptions of the OLS, the variable should be normal distributed. Thus, we change the income variables of sons and fathers to a log income variable. The second graph shows the distribution after the log.
 
+```ruby
+#histogram with density curve real income
+ggplot(income, aes(x=income_s)) +
+  geom_histogram(aes(y=..density..), color="black", fill="lightgrey", breaks=seq(0,20000, by=290)) +
+  geom_density(color="red")+
+  xlab("Real Income Sons")+
+  ylab("Density")
+```
+
+```ruby
+#histogram with density curve ln real income
+ggplot(income, aes(x=Lifeincome_Sons)) +
+  geom_histogram(aes(y=..density..), color="black", fill="lightgrey", breaks=seq(6.8,10, by=0.060)) +
+  geom_density(color="red")+
+  xlab("Lifeincome Sons")+
+  ylab("Density")
+```
+
 <img src="images/02_histogram_density.png" width="400">
 <img src="images/03_histogram_density_ln.png" width="400">
 
@@ -109,13 +127,6 @@ Which gives a coefficient of 0.277***, with a 95% confidence interval of (0.173;
 
 ## 4. Graphic Analysis
 
-```ruby
-#histogram with density curve real income
-ggplot(income, aes(x=income_s)) +
-  geom_histogram(aes(y=..density..), color="black", fill="lightgrey", breaks=seq(0,20000, by=290)) +
-  geom_density(color="red")+
-  xlab("Real Income Sons")+
-  ylab("Density")
-```
+
 
 
