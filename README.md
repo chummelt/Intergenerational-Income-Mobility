@@ -17,7 +17,7 @@ The data preparation and linear regressions are conducted in the stata do-files.
 
 ## 3. Empirical Results
 
-<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;Y_{i,&space;g}=\alpha&plus;\beta&space;Y_{i,&space;g-1}&plus;\epsilon_{i,&space;g}" title="\large Y_{i, g}=\alpha+\beta Y_{i, g-1}+\epsilon_{i, g}" />
+<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}&space;Y_{i,&space;g}=\alpha&plus;\beta&space;Y_{i,&space;g-1}&plus;\epsilon_{i,&space;g}}" title="\large {\color{White} Y_{i, g}=\alpha+\beta Y_{i, g-1}+\epsilon_{i, g}}" />
 
 ## 4. Conclusion
 
