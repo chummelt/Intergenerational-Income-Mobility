@@ -37,13 +37,13 @@ with Y(*i,g,t*) being observable income of generation child of family *i* in yea
 Basically this means, if you go to college, you probability start working later in life than your peers who started working right after highschool. Since we want to estimate the lifetime income and use real income data, it is not optimal to use income data of a college student who might earn less at the age of 22 but eventually might earn more after college.
 
 So to solve for this bias, the estimation excludes income observations from before the age of 30 and after the life of 50.
-```
+```ruby
 drop if age <30
 drop if age >55
 ```
 In addition to that, control variables for *age*, *age squared* and the *number of years in a child's income* are generated and introduced in *Z(i,g-1)* and *W(i,g*).
 
-```
+```ruby
 bys cid: egen first_observation = min(syear)
 bys cid: egen last_observation = max(syear)
 gen nryrs = .
@@ -69,7 +69,7 @@ The individual labor income variable covers gross income and salary from all emp
 - drop ids for which there are less than 5 observations available. Estimating life-income on less income-data points introduces bias
 - use only male observartions - income observations for women in 1980s may introduce a bias to the data  
 
-```
+```ruby
 drop if incomeS <400
 drop if counter_pid <5
 drop if sex == 2
@@ -83,7 +83,7 @@ merge 1:1 fnr using "C:\Users\...Fathers.dta"
 ```
 The individuals who did not match have to be droppped, leaving only father-son pairs. This leaves us with a sample of N=367. 
 
-```
+```ruby
 drop if income_s == .
 drop if income_f == .
 drop _merge
@@ -94,7 +94,7 @@ Now, if we take a step back and look again at the income observations for sons i
 <img src="images/03_histogram_density_ln.png" width="400">
 
 This can also be done after the merging of the data. 
-```
+```ruby
 gen log_incomeS_mean = ln(income_s)
 gen log_incomeF_mean = ln(income_f)
 ```
@@ -102,12 +102,20 @@ gen log_incomeF_mean = ln(income_f)
 ## 3. Empirical Results
 
 After the estimation of the lifetime income, the mobility coefficient is estimated with an OLS:
-```
+```ruby
 reg Lifeincome_Sons Lifeincome_Fathers c.Age_Sons##c.Age_Sons c.Age_Fathers##c.Age_Fathers Nryrs, robust
 ```
-Which gives a coefficient of 0.277***, with a 95% confidence interval of (0.1733;0.382).
+Which gives a coefficient of 0.277***, with a 95% confidence interval of (0.173;0.382).
 
 ## 4. Graphic Analysis
 
+```ruby
+#histogram with density curve real income
+ggplot(income, aes(x=income_s)) +
+  geom_histogram(aes(y=..density..), color="black", fill="lightgrey", breaks=seq(0,20000, by=290)) +
+  geom_density(color="red")+
+  xlab("Real Income Sons")+
+  ylab("Density")
+```
 
 
