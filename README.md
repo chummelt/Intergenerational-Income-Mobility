@@ -88,7 +88,8 @@ drop if income_s == .
 drop if income_f == .
 drop _merge
 ```
-Now, if we take a step back and look again at the income observations for sons in the first graph, we see that the income variable is not normal distributed but rather skewed. In order to meet all of the assumptions of the OLS, the variable should be normal distributed. Thus, we change the income variables of sons and fathers to a log income variable. The second graph shows the distribution after the log.
+Now, if we take a step back and look again at the income observations for sons in the first graph, we see that the income variable is not normal distributed but rather skewed. In order to meet all of the assumptions of the OLS, the variable should be normal distributed. Thus, we change the income variables of sons and fathers to a log income variable. The second graph shows the distribution after the log.  
+(The code for the two graphs is from the r-script which focuses on the graphical analysis) 
 
 ```ruby
 #histogram with density curve real income
@@ -125,8 +126,51 @@ reg Lifeincome_Sons Lifeincome_Fathers c.Age_Sons##c.Age_Sons c.Age_Fathers##c.A
 ```
 Which gives a coefficient of 0.277***, with a 95% confidence interval of (0.173;0.382).
 
-## 4. Graphic Analysis
+## 4. Transmission Matrix
 
+Since the dataset is in a dta format, you need to load the package 'haven' into the library to open the file. For the transition matrix and the marcov chain you need to load the package 'markovchain'. For the usual data analysis tools we use 'dplyr' and 'tidyverse'. 
+```ruby
+rm(list=ls(all=TRUE)) 
+library(tidyverse)
+library(haven)
+library(ggplot2)
+library(dplyr)
+library(markovchain)
+```
 
+After loading the data, we need to build two classes for fathers and sons. For each fathers and sons, quantiles will be used as limits for each class. 
+```ruby
+#new data for class fathers
+father <- select(income_sub,income_f)
+father$fs <- c("Father")
 
+father %>% rename(Income = income_f)
+colnames(father) <- c("Income", "Status")
 
+#use quantiles to write limits for A, B, C, D, E for fathers
+quantile(father$Income)
+quantile(father$Income, probs = c(0,0.2,0.4,0.6,0.8,1))
+
+father$perc[father$Income<=2763] = "A"
+father$perc[father$Income>2763 & father$Income <= 3379] = "B"
+father$perc[father$Income>3379 & father$Income <= 3915] = "C"
+father$perc[father$Income>3915 & father$Income <= 4654] = "D"
+father$perc[father$Income>4654 & father$Income <= 21120] = "E"
+```
+The same goes for the sons. The quantiles for the income data of the sons are used for the class limits. After that, we can build the transition matrix and print the rounded transition matrix.
+```ruby
+#build transition matrix
+trans.mat1 <- prop.table(with(data.perc, table(Father, Son)),1)
+
+#output transition matrix (rounded)
+trans.mat1
+round(trans.mat1, digits = 2)
+```
+
+Use this transition matrix for the plotting of the markov chain
+```ruby
+#visual marcov chain
+trans.mat2 <- as.matrix.data.frame(trans.mat1)
+markov2 <-new("markovchain",transitionMatrix=trans.mat2 ,states=c("1.Quantil","2.Quantil","3.Quantil","4.Quantil","5.Quantil"), name="test")
+plot(markov2)
+```
