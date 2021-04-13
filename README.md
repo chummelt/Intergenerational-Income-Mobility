@@ -5,15 +5,15 @@ Estimation of the economic mobility of Germany and to find regional differences 
 
 The structure of the empirical investigation is as follows: 
 
-- First: intergenerational mobility in Germany (full sample)
-- Second: intergenerational mobility in rural and urban areas (sub-sample)
-- Third: intergenerational mobility in East Germany and West Germany (sub-sample)
+- **First**: intergenerational mobility in Germany (full sample)
+- **Second**: intergenerational mobility in rural and urban areas (sub-sample)
+- **Third**: intergenerational mobility in East Germany and West Germany (sub-sample)
 
 The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts. 
 
 ## 2 Methodology of Analysis:
 
-Empirical strategy: identify correlation between the long-term income 𝑌(i,g) of the child in family i and his social parent:
+Empirical strategy: identify correlation between the long-term income 𝑌(i,g) of the child in family *i* and his social parent:
 
 <img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}&space;Y_{i,&space;g}=\alpha&plus;\beta&space;Y_{i,&space;g-1}&plus;\epsilon_{i,&space;g}}" title="\large {\color{White} Y_{i, g}=\alpha+\beta Y_{i, g-1}+\epsilon_{i, g}}" />
 
@@ -23,10 +23,20 @@ Since there is no data available for lifetime income, this has to be estimated. 
 2. mobility coefficient
 
 This is conducted with the following methods:
+
 **Full sample**: Log-log OLS, Quantile Regression, Transition Matrix
 **Sub-samples** (East/West and rural/urban): Log-log OLS
 
 ### 2.1 Measuring Lifetime Income
+
+To estimate the lifetime income, one has to use actual observable income data. 
+
+<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}Y_{i,&space;g,&space;t}=Y_{i,&space;g}&plus;v_{i,&space;g,&space;t}}" title="\large {\color{White}Y_{i, g, t}=Y_{i, g}+v_{i, g, t}}" />
+
+<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}Y_{i,&space;g,&space;t}=Y_{i,&space;g}&plus;v_{i,&space;g,&space;t}}" title="\large {\color{White}Y_{i, g-1, t}=Y_{i, g-1}+v_{i, g-1, t}}" />
+
+with Y(i,g,t) being observable income of generation child of family *i* in year t. But, careful; error-in-variables bias emerges. Workers with higher lifetime earnings tend to enter the labor market later than workers with shorter education periods. Practical this means, if you go to college, you probability start working later in life than your peers who started working right after highschool. Since we want to estimate the lifetime income and use real income data, it is not optimal to use income data of a college student who might earn less at the age of 22 but eventually might earn more after college.
+
 ### 2.2 Data and Sample Selection
 
 ## 3. Empirical Results
