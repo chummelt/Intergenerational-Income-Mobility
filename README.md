@@ -11,12 +11,14 @@ The structure of the empirical investigation is as follows:
 
 The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts. 
 
+## 2 Methodology of Research
+### 2.1 Measuring Lifetime Income
+### 2.2 Data and Sample Selection
 
-```ruby
-# open distribution list
-with open('people.csv', 'r', newline='') as f:
-    reader = csv.reader(f)
-    distro = [row for row in reader]
+## 3. Empirical Results
+
+## 4. Conclusion
+
 ```
 ```
 *3. Umbenennung der Variablen, damit mit dem Datenset pequiv.dta / ppathl.dta gemerged werden kann
