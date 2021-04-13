@@ -65,10 +65,10 @@ Collection period: 1984-2017
 Publication date: 2019-03-05
 
 The individual labor income variable covers gross income and salary from all employment before deduction of taxes and social security, unemployment and health insurance.
-Other important sample restrictions:  
+**Important sample restrictions**:  
 
 - drop observations under 400€ a month - since it is assumed that this would be a mini-job, not a real living wage  
-- drop ids for which there are less than 5 observations available. Estimating life-income on 3 income-data points seems to far a stretch
+- drop ids for which there are less than 5 observations available. Estimating life-income on less income-data points introduces bias
 - use only male observartions - income observations for women in 1980s may introduce a bias to the data  
 
 ```
