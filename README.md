@@ -9,7 +9,8 @@ The structure of the empirical investigation is as follows:
 - **Second**: intergenerational mobility in rural and urban areas (sub-sample)
 - **Third**: intergenerational mobility in East Germany and West Germany (sub-sample)
 
-The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts. 
+The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts.
+Every step is described detailed in the scripts. Nevertheless, this readme provides the additional econometric framework in addition to the code. 
 
 ## 2 Methodology of Analysis:
 
@@ -53,16 +54,16 @@ gen nryrs = .
 replace nryrs = last_observation - first_observation
 label variable nryrs "number of years in son’s earnings average"
 ```
-
+This leads to the estimation equation:  
 <img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}\ln&space;Y_{i,&space;g}=\alpha&plus;\beta&space;\ln&space;Y_{i,&space;t}&plus;\eta&space;Z_{i,&space;g-1}&plus;\gamma&space;W_{i,&space;g}&plus;\varepsilon_{i,&space;t}}" title="\large {\color{White}\ln Y_{i, g}=\alpha+\beta \ln Y_{i, t}+\eta Z_{i, g-1}+\gamma W_{i, g}+\varepsilon_{i, t}}" />
 
 
 ### 2.2 Data and Sample Selection
 
-The longitudinal survey of the Socio-Economic Panel (SOEP) is used which captures representative data from 1984-2017.
-DOI: 10.5684/soep.v34
-Collection period: 1984-2017
-Publication date: 2019-03-05
+The longitudinal survey of the Socio-Economic Panel (SOEP) is used which captures representative data from 1984-2017.  
+DOI: 10.5684/soep.v34  
+Collection period: 1984-2017  
+Publication date: 2019-03-05  
 
 The individual labor income variable covers gross income and salary from all employment before deduction of taxes and social security, unemployment and health insurance.
 **Important sample restrictions**:  
@@ -77,14 +78,29 @@ drop if counter_pid <5
 drop if sex == 2
 ```
 
+After the data for both sons and fathers are prepared, both samples have to be merged over the father id (fnr)
 
+```
+use "C:\Users\...Sons.dta"
+merge 1:1 fnr using "C:\Users\...Fathers.dta"
+```
+The individuals who did not match have to be droppped, leaving only father-son pairs. 
+
+```
+drop if income_s == .
+drop if income_f == .
+drop _merge
+```
+
+```
+gen log_incomeS_mean = ln(income_s)
+gen log_incomeF_mean = ln(income_f)
+```
 ## 3. Empirical Results
 
 
 
 ## 4. Conclusion
 
-```
-```
 
 
