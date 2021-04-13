@@ -79,7 +79,7 @@ After the data for both sons and fathers are prepared, both samples have to be m
 use "C:\Users\...Sons.dta"
 merge 1:1 fnr using "C:\Users\...Fathers.dta"
 ```
-The individuals who did not match have to be droppped, leaving only father-son pairs. 
+The individuals who did not match have to be droppped, leaving only father-son pairs. This leaves us with a sample of N=367. 
 
 ```
 drop if income_s == .
@@ -97,13 +97,15 @@ gen log_incomeS_mean = ln(income_s)
 gen log_incomeF_mean = ln(income_f)
 ```
 
-
-
 ## 3. Empirical Results
 
+After the estimation of the lifetime income, the mobility coefficient is estimated with an OLS:
+```
+reg Lifeincome_Sons Lifeincome_Fathers c.Age_Sons##c.Age_Sons c.Age_Fathers##c.Age_Fathers Nryrs, robust
+```
+Which gives a coefficient of 0.277***, with a 95% confidence interval of (0.1733;0.382).
 
-
-## 4. Conclusion
+## 4. Graphic Analysis
 
 
 
