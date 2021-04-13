@@ -9,7 +9,7 @@ The structure of the empirical investigation is as follows:
 - Third: intergenerational mobility in East Germany and West Germany (sub-sample)
 
 
-
+The data preparation and linear regressions are conducted in the stata do-files. The visualizations, quantile regressions und transition matrices are conducted in the r scripts. 
 
 
 ```ruby
