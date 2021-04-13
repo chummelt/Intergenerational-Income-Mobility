@@ -16,7 +16,9 @@ The data preparation and linear regressions are conducted in the stata do-files.
 ### 2.2 Data and Sample Selection
 
 ## 3. Empirical Results
-$ a^2 + b^2 = c^2 $
+
+![\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}](https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}) 
+
 ## 4. Conclusion
 
 ```
