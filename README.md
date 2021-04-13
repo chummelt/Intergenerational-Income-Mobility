@@ -24,8 +24,7 @@ Since there is no data available for lifetime income, this has to be estimated. 
 
 This is conducted with the following methods:
 
-**Full sample**: Log-log OLS, Quantile Regression, Transition Matrix
-
+**Full sample**: Log-log OLS, Quantile Regression, Transition Matrix  
 **Sub-samples** (East/West and rural/urban): Log-log OLS
 
 ### 2.1 Measuring Lifetime Income
@@ -40,14 +39,13 @@ with Y(*i,g,t*) being observable income of generation child of family *i* in yea
 
 Basically this means, if you go to college, you probability start working later in life than your peers who started working right after highschool. Since we want to estimate the lifetime income and use real income data, it is not optimal to use income data of a college student who might earn less at the age of 22 but eventually might earn more after college.
 
-So to solve for this bias, the estimation excludes income observations from before the age of 30 and after the life of 50. In addition to that, control variables for *age*, *age squared* and the *number of years in a child's income* are introduced in *Z(i,g-1)* and *W(i,g*.
-
-<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}\ln&space;Y_{i,&space;g}=\alpha&plus;\beta&space;\ln&space;Y_{i,&space;t}&plus;\eta&space;Z_{i,&space;g-1}&plus;\gamma&space;W_{i,&space;g}&plus;\varepsilon_{i,&space;t}}" title="\large {\color{White}\ln Y_{i, g}=\alpha+\beta \ln Y_{i, t}+\eta Z_{i, g-1}+\gamma W_{i, g}+\varepsilon_{i, t}}" />
-
+So to solve for this bias, the estimation excludes income observations from before the age of 30 and after the life of 50.
 ```
 drop if age <30
 drop if age >55
 ```
+In addition to that, control variables for *age*, *age squared* and the *number of years in a child's income* are generated and introduced in *Z(i,g-1)* and *W(i,g*).
+
 ```
 bys cid: egen first_observation = min(syear)
 bys cid: egen last_observation = max(syear)
@@ -56,10 +54,16 @@ replace nryrs = last_observation - first_observation
 label variable nryrs "number of years in son’s earnings average"
 ```
 
-
+<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}\ln&space;Y_{i,&space;g}=\alpha&plus;\beta&space;\ln&space;Y_{i,&space;t}&plus;\eta&space;Z_{i,&space;g-1}&plus;\gamma&space;W_{i,&space;g}&plus;\varepsilon_{i,&space;t}}" title="\large {\color{White}\ln Y_{i, g}=\alpha+\beta \ln Y_{i, t}+\eta Z_{i, g-1}+\gamma W_{i, g}+\varepsilon_{i, t}}" />
 
 
 ### 2.2 Data and Sample Selection
+
+The longitudinal survey of the Socio-Economic Panel (SOEP) is used which captures representative data from 1984-2017.
+>DOI: 10.5684/soep.v34
+Collection period: 1984-2017
+Publication date: 2019-03-05<
+
 
 ## 3. Empirical Results
 
