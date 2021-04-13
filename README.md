@@ -36,7 +36,28 @@ To estimate the lifetime income, one has to use actual observable income data.
 
 <img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}Y_{i,&space;g-1,&space;t}=Y_{i,&space;g-1}&plus;v_{i,&space;g-1,&space;t}}" title="\large {\color{White}Y_{i, g-1, t}=Y_{i, g-1}+v_{i, g-1, t}}" />
 
-with Y(*i,g,t*) being observable income of generation child of family *i* in year t. But, careful; error-in-variables bias emerges. Workers with higher lifetime earnings tend to enter the labor market later than workers with shorter education periods. Practical this means, if you go to college, you probability start working later in life than your peers who started working right after highschool. Since we want to estimate the lifetime income and use real income data, it is not optimal to use income data of a college student who might earn less at the age of 22 but eventually might earn more after college.
+with Y(*i,g,t*) being observable income of generation child of family *i* in year t. But, careful; error-in-variables bias emerges. Workers with higher lifetime earnings tend to enter the labor market later than workers with shorter education periods.
+
+Basically this means, if you go to college, you probability start working later in life than your peers who started working right after highschool. Since we want to estimate the lifetime income and use real income data, it is not optimal to use income data of a college student who might earn less at the age of 22 but eventually might earn more after college.
+
+So to solve for this bias, the estimation excludes income observations from before the age of 30 and after the life of 50. In addition to that, control variables for *age*, *age squared* and the *number of years in a child's income* are introduced in *Z(i,g-1)* and *W(i,g*.
+
+<img src="https://latex.codecogs.com/svg.latex?\bg_black&space;\large&space;{\color{White}\ln&space;Y_{i,&space;g}=\alpha&plus;\beta&space;\ln&space;Y_{i,&space;t}&plus;\eta&space;Z_{i,&space;g-1}&plus;\gamma&space;W_{i,&space;g}&plus;\varepsilon_{i,&space;t}}" title="\large {\color{White}\ln Y_{i, g}=\alpha+\beta \ln Y_{i, t}+\eta Z_{i, g-1}+\gamma W_{i, g}+\varepsilon_{i, t}}" />
+
+```
+drop if age <30
+drop if age >55
+```
+```
+bys cid: egen first_observation = min(syear)
+bys cid: egen last_observation = max(syear)
+gen nryrs = .
+replace nryrs = last_observation - first_observation
+label variable nryrs "number of years in son’s earnings average"
+```
+
+
+
 
 ### 2.2 Data and Sample Selection
 
