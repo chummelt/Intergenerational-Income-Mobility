@@ -47,14 +47,14 @@ drop if fnr ==.
 
 *generate income variable
 gen incomeS = plc0013_h
-label variable incomeS "Nominaler Bruttoveerdienst letzter Monat (harmonisiert)"
+label variable incomeS "gross nominal wage last month (harmonized)"
 
 *clean age variable
 rename d11101 age
 
 *identify oldest person in hh
 bys cid: egen birthyear_min = min(birthyear)
-label variable birthyear_min "aeltestes Geburtsjahr von einer Person im jeweiligen Haushalt"
+label variable birthyear_min "oldest birthyear of the person in respective household"
 keep if birthyear_min == birthyear
 
 *check for a hh with sons born in the same year
@@ -135,20 +135,20 @@ replace inflationrate = 1.5 if syear == 2017
 
 gen income_S =.
 replace income_S = incomeS/ (1+(inflationrate/100))
-label variable income_S "Brutto Reallohn Soehne"
+label variable income_S "gross real wage sons"
 
 *create average income (years)
 bysort syear: egen average_income = mean(income_S)
-label variable average_income "Durchschnittliche Jahreseinkommen"
+label variable average_income "average income (year)"
 
 *create growth rate to the basis year 2017
 gen mean_income_2017 = 4011.708
-gen wachstumsrate_year = . 
-replace wachstumsrate_year = 1/(average_income/mean_income_2017)
+gen growthrate_year = . 
+replace growthratee_year = 1/(average_income/mean_income_2017)
 
 gen income_s = .
-replace income_s = income_S * wachstumsrate_year
-label variable average_income "Gewichteter Brutto Reallohn monatl"
+replace income_s = income_S * growthrate_year
+label variable average_income "weighted gross real wage"
 
 *gen income
 sort cid
