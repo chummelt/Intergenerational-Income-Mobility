@@ -1,5 +1,5 @@
 *********************************************
-/* 	 Christina Koetter	             */
+/* 	 Christina Koetter	           */
 /* 	 Data Prep & Regression		   */
 /*   Intergenerational Income Elasticity   */
 *********************************************
