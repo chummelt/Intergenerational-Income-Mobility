@@ -147,7 +147,7 @@ replace growthratee_year = 1/(average_income/mean_income_2017)
 
 gen income_s = .
 replace income_s = income_S * growthrate_year
-label variable average_income "weighted gross real wage"
+label variable average_income "weighted gross real wage sons (month)"
 
 *gen income
 sort cid
@@ -218,7 +218,7 @@ rename d11101 age
 
 *gen income
 gen incomeF = plc0013_h
-label variable incomeF "Nominaler Bruttoverdienst letzter Monat (harmonisiert) Soehne"
+label variable incomeF "gross nominal wage last month sons (harmonized)"
 *br cid pid fnr syear age incomeF
 
 *keep only observations of 30 < age < 55
@@ -283,21 +283,21 @@ replace inflationrate = 1.5 if syear == 2017
 
 gen income_F =.
 replace income_F = incomeF/ (1+(inflationrate/100))
-label variable income_F "Brutto Reallohn Vaeter"
+label variable income_F "gross real wage fathers"
 
 *create average
 bysort syear: egen average_income = mean(income_F)
-label variable average_income "Durchschnittliche Jahreseinkommen"
+label variable average_income "average wage (year)"
 
 *gen growth rate
 gen mean_income_2017 = 4009.589
-gen wachstumsrate_year = . 
-replace wachstumsrate_year = 1/(average_income/mean_income_2017)
+gen growthrate_year = . 
+replace growthrate_year = 1/(average_income/mean_income_2017)
 
 
 gen income_f = .
-replace income_f = income_F * wachstumsrate_year
-label variable average_income "Gewichteter Brutto Reallohn monatl"
+replace income_f = income_F * growthrate_year
+label variable average_income "weighted gross real wage fathers (month)"
 
 *collapse ans save
 collapse cid income_f incomeF income_F age_F fnr fybirth bioyear birthyear hid d11102ll i11101, by(pid)
