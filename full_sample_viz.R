@@ -14,7 +14,7 @@ library(ggplot2)
 options(scipen=999) 
 
 #read data
-income <- read_dta("C:/Users/Michelle/Documents/RUB/WS_1920/Masterarbeit/Daten/1806_both_collapsed.dta")
+income <- read_dta("C:/Users/....dta")
 attach(income)
 str(income)
 Income <- as.factor(income)
@@ -51,7 +51,7 @@ library(ggplot2)
 library(dplyr)
 library(markovchain)
 
-income <- read_dta("C:/Users/Michelle/Documents/RUB/WS_1920/Masterarbeit/Daten/1806_both_collapsed.dta")
+income <- read_dta("C:/Users/....dta")
 
 #optional exclusion of outliers, 25000 includes all variables for sons and fathers
 income_sub <- subset(income, income_f <= 25000, income_s <= 25000)
@@ -120,7 +120,7 @@ library(dplyr)
 library(tidyr)
 
 #load data
-income <- read_dta("C:/Users/Michelle/Documents/RUB/WS_1920/Masterarbeit/Daten/1806_both_collapsed.dta")
+income <- read_dta("C:/Users/....dta")
 attach(income)
 str(income)
 
